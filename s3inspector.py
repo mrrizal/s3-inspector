@@ -130,7 +130,7 @@ def scan_bucket_urls(bucket_name):
     warnings.filterwarnings("ignore")
     for url in urls_to_scan:
         try:
-            content = requests.get(url).text
+            content = requests.get(url, verify=False).text
         except requests.exceptions.SSLError:
             continue
         if not re.search("Access Denied", content):
